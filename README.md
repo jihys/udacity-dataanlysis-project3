@@ -1,4 +1,4 @@
-# udacity-dataanlysis-project3
+# udacity-data-anlysis-project3
 
 
 In this project, I will wrangle WeRateDogs Twitter data to create interesting and trustworthy analyses and visualizations. Since the Twitter archive only contains very basic tweet information, I will additionaly gather data using Tweeter API and combine with the WeRateDogs Twitter data. The combined data will be also assessed and cleaned to get insightful analyses and visualizations.
