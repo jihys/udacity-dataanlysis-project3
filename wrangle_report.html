@@ -13082,7 +13082,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Project:-Wrangle-and-Analyze-Data-(WeRateDogs)">Project: Wrangle and Analyze Data (WeRateDogs)<a class="anchor-link" href="#Project:-Wrangle-and-Analyze-Data-(WeRateDogs)">&#182;</a></h1><h2 id="Table-of-Contents">Table of Contents<a class="anchor-link" href="#Table-of-Contents">&#182;</a></h2><ul>
+<h2 id="Project:-Wrangle-and-Analyze-Data-(WeRateDogs)">Project: Wrangle and Analyze Data (WeRateDogs)<a class="anchor-link" href="#Project:-Wrangle-and-Analyze-Data-(WeRateDogs)">&#182;</a></h2><h2 id="Table-of-Contents">Table of Contents<a class="anchor-link" href="#Table-of-Contents">&#182;</a></h2><ul>
 <li><a href="#intro">1. Introduction</a></li>
 <li><a href="#gathering">2. Gathering</a></li>
 <li><a href="#assessing">3. Assessing</a></li>
@@ -13515,7 +13515,8 @@ Using the tweet IDs in the WeRateDogs Twitter archive, I <strong>queryed the Twi
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">numerator_unique_values</span><span class="o">=</span><span class="n">numerator_count</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">numerator_count</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">rating_numerator</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="n">numerator_unique_values</span><span class="o">=</span><span class="n">numerator_count</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
 <span class="n">numerator_unique_values</span>
 
 <span class="n">index_list</span><span class="o">=</span><span class="p">[]</span>
@@ -13619,6 +13620,59 @@ Using the tweet IDs in the WeRateDogs Twitter archive, I <strong>queryed the Twi
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#check out doggo,floofer,pupper, puppor labeled columns</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;doggo&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()[</span><span class="s1">&#39;doggo&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;floofer&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()[</span><span class="s1">&#39;floofer&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;pupper&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()[</span><span class="s1">&#39;pupper&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;puppo&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()[</span><span class="s1">&#39;puppo&#39;</span><span class="p">])</span>
+<span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;doggo==&quot;doggo&quot; or floofer==&quot;floofer&quot;or pupper==&quot;pupper&quot;or puppo==&quot;puppo&quot;&#39;</span><span class="p">)[[</span><span class="s1">&#39;doggo&#39;</span><span class="p">,</span><span class="s1">&#39;floofer&#39;</span><span class="p">,</span><span class="s1">&#39;pupper&#39;</span><span class="p">,</span><span class="s1">&#39;puppo&#39;</span><span class="p">]]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;doggo==&quot;doggo&quot; &amp; pupper==&quot;pupper&quot;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">expanded_urls</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">expanded_urls</span><span class="p">[</span><span class="mi">778</span><span class="p">]</span>
+<span class="c1">##There are multiple dog stage lables since there are multiple dogs in a picture.</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="https://pbs.twimg.com/media/CiyHLocU4AI2pJu?format=jpg&name=900x900"></p>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -13744,10 +13798,10 @@ Using the tweet IDs in the WeRateDogs Twitter archive, I <strong>queryed the Twi
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><a id='observation'></a></p>
 <h3 id="3.3-Observations">3.3 Observations<a class="anchor-link" href="#3.3-Observations">&#182;</a></h3><p><strong>WeRateDogs Twitter Archive</strong></p>
 <ul>
 <li><strong>doggo, floofer,pupper,puppo</strong> columns are not True/False values. Actual doggo, floofer, pupper, puppo stage names are exist.</li>
+<li>Multiple labeling for dog stages since there are multiple dogs in a picture.So these colums need to be kept.</li>
 <li>Retweets are may not be used for analysis.</li>
 <li><strong>retweeted_status_id,retweeted_status_user_id,in_reply_to_status_id,in_reply_to_user_id</strong>s non null values are float values.</li>
 <li>Wiered ratings observed in <strong>rating_numerator &amp; ratings_denominator</strong>: <ul>
@@ -13755,7 +13809,7 @@ Using the tweet IDs in the WeRateDogs Twitter archive, I <strong>queryed the Twi
 <li>Only part of decimal numbers were extracted for numerator(11.27/10, 9.75/10, 11.26/10)</li>
 <li>Ratings for Multiple dogs in a image get aggreated ratings (44/40,50/50, 165/150, 84/70,88/80, 144/120,143/130,45/50,99/90, 121/110, 204/170) </li>
 <li>Extracted duplicated OO/OO format in text column (Current value --&gt; Updated value) 
-(Event 9/11--&gt; 14/10,Size3 1/2 legged --&gt; 9/10, 50/50 --&gt; 11/10, 17/10 --&gt; 13/10, 960/00 --&gt;13/10, 4/20 --&gt; 13/10) </li>
+(Event 9/11--&gt; 14/10,Size3 1/2 legged --&gt; 9/10, 50/50 --&gt; 11/10, 17/10 --&gt; 13/10, 960/00 --&gt;13/10, 4/20 --&gt; 13/10)</li>
 </ul>
 </li>
 </ul>
@@ -13776,12 +13830,11 @@ Using the tweet IDs in the WeRateDogs Twitter archive, I <strong>queryed the Twi
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a id='clean'></a></p>
-<h2 id="4.-Clean">4. Clean<a class="anchor-link" href="#4.-Clean">&#182;</a></h2><p>Based on Observation in previous Step, I have cleaned the data for quality and tidiness.Also I have combined all three datasets into one dataframe so that I can do more analysis in the next step.
-The steps that I have gone through are belows.</p>
+<h2 id="4.-Clean">4. Clean<a class="anchor-link" href="#4.-Clean">&#182;</a></h2><p>This section consists of the cleaning portion of the data wrangling process:</p>
 <ul>
 <li>4.1 Tiwtter_Archive: Delete Retweets</li>
 <li>4.2 Twitter_Archive: Drop columns that are not used</li>
-<li>4.3 Twitter_Archive: Create dogs stage columns and drop doggo,floofer,pupper, puppo</li>
+<li>4.3 Twitter_Archive: Change column values to 0 for None and 1 for actual value.</li>
 <li>4.4 Twitter_archive: Create Year, Month, Day colums from timestamp</li>
 <li>4.5 Twitter_Archive: Correct values of ratings_numberator &amp; ratings_denominator</li>
 <li>4.6 Image_Prediction: Drop duplicated Image prediction based on url</li>
@@ -13790,6 +13843,7 @@ The steps that I have gone through are belows.</p>
 <li>4.9 API-DATA: Change type for tweet_id</li>
 <li>4.10 API-DATA: Drop Friends_count, retweeted column</li>
 <li>4.11 Merge dataframes</li>
+<li>4.12 Save Merged dataframes</li>
 </ul>
 
 </div>
@@ -13823,7 +13877,7 @@ The steps that I have gone through are belows.</p>
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#CODE: Delete retweets by filtering the NaN of retweeted_status_user_id</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Code: delete retweeted code</span>
 <span class="n">df_clean</span> <span class="o">=</span> <span class="n">df_clean</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">isnull</span><span class="p">(</span><span class="n">df_clean</span><span class="p">[</span><span class="s1">&#39;retweeted_status_user_id&#39;</span><span class="p">])]</span>
 
 <span class="c1">#TEST</span>
@@ -13847,13 +13901,8 @@ The steps that I have gone through are belows.</p>
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#get the column names of twitter_archive_clean</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df_clean</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
-
-<span class="c1">#CODE: Delete columns no needed</span>
-<span class="n">df_clean</span> <span class="o">=</span> <span class="n">df_clean</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;in_reply_to_status_id&#39;</span><span class="p">,</span><span class="s1">&#39;in_reply_to_user_id&#39;</span><span class="p">,</span>
-                           <span class="s1">&#39;retweeted_status_id&#39;</span><span class="p">,</span><span class="s1">&#39;retweeted_status_user_id&#39;</span><span class="p">,</span> 
-                            <span class="s1">&#39;retweeted_status_timestamp&#39;</span><span class="p">,</span> <span class="s1">&#39;expanded_urls&#39;</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>                                                   
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">##check columns</span>
+<span class="n">df_clean</span><span class="o">.</span><span class="n">columns</span>
 </pre></div>
 
     </div>
@@ -13866,7 +13915,22 @@ The steps that I have gone through are belows.</p>
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#TEST</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_clean</span> <span class="o">=</span> <span class="n">df_clean</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;in_reply_to_status_id&#39;</span><span class="p">,</span><span class="s1">&#39;in_reply_to_user_id&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span>
+                           <span class="s1">&#39;retweeted_status_id&#39;</span><span class="p">,</span><span class="s1">&#39;retweeted_status_user_id&#39;</span><span class="p">,</span> 
+                            <span class="s1">&#39;retweeted_status_timestamp&#39;</span><span class="p">,</span> <span class="s1">&#39;expanded_urls&#39;</span><span class="p">])</span>                                                   
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Test</span>
 <span class="n">df_clean</span><span class="o">.</span><span class="n">columns</span>
 </pre></div>
 
@@ -13878,7 +13942,7 @@ The steps that I have gone through are belows.</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="4.3-Twitter_Archive:-Create-dogs-stage-columns-and-drop-doggo,floofer,pupper,-puppo">4.3 Twitter_Archive: Create dogs stage columns and drop doggo,floofer,pupper, puppo<a class="anchor-link" href="#4.3-Twitter_Archive:-Create-dogs-stage-columns-and-drop-doggo,floofer,pupper,-puppo">&#182;</a></h3>
+<h3 id="4.3-Twitter_Archive:-Change-column-values-to-0-for-None-and-1-for-actual-value.">4.3 Twitter_Archive: Change column values to 0 for None and 1 for actual value.<a class="anchor-link" href="#4.3-Twitter_Archive:-Change-column-values-to-0-for-None-and-1-for-actual-value.">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -13887,16 +13951,11 @@ The steps that I have gone through are belows.</p>
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#CODE: Melt the doggo, floofer, pupper and puppo columns to dogs and dogs_stage column</span>
-<span class="n">df_clean</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">df_clean</span><span class="p">,</span> <span class="n">id_vars</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;tweet_id&#39;</span><span class="p">,</span><span class="s1">&#39;timestamp&#39;</span><span class="p">,</span><span class="s1">&#39;text&#39;</span><span class="p">,</span><span class="s1">&#39;rating_numerator&#39;</span><span class="p">,</span>
-                                       <span class="s1">&#39;rating_denominator&#39;</span><span class="p">,</span><span class="s1">&#39;name&#39;</span><span class="p">],</span>                                                            
-                               <span class="n">var_name</span><span class="o">=</span><span class="s1">&#39;dogs&#39;</span><span class="p">,</span> <span class="n">value_name</span><span class="o">=</span><span class="s1">&#39;dogs_stage&#39;</span><span class="p">)</span>
-
-<span class="c1">#CODE: drop dogs</span>
-<span class="n">df_clean</span> <span class="o">=</span> <span class="n">df_clean</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;dogs&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-
-<span class="c1">#CODE: Sort by dogs_stage then drop duplicated based on tweet_id except the last occurrence</span>
-<span class="n">df_clean</span> <span class="o">=</span> <span class="n">df_clean</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;dogs_stage&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="s1">&#39;tweet_id&#39;</span><span class="p">,</span> <span class="n">keep</span><span class="o">=</span><span class="s1">&#39;last&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df_clean</span><span class="p">[</span><span class="s1">&#39;doggo&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()[</span><span class="s1">&#39;doggo&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_clean</span><span class="p">[</span><span class="s1">&#39;floofer&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()[</span><span class="s1">&#39;floofer&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_clean</span><span class="p">[</span><span class="s1">&#39;pupper&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()[</span><span class="s1">&#39;pupper&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_clean</span><span class="p">[</span><span class="s1">&#39;puppo&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()[</span><span class="s1">&#39;puppo&#39;</span><span class="p">])</span>
+<span class="n">df_clean</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 
     </div>
@@ -13909,8 +13968,45 @@ The steps that I have gone through are belows.</p>
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#TEST</span>
-<span class="n">df_clean</span><span class="p">[</span><span class="s1">&#39;dogs_stage&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Code: 1 for values exist, 0 for None</span>
+<span class="n">df_clean</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_clean</span><span class="o">.</span><span class="n">doggo</span><span class="o">==</span><span class="s2">&quot;doggo&quot;</span><span class="p">,</span><span class="s1">&#39;doggo&#39;</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">df_clean</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_clean</span><span class="o">.</span><span class="n">doggo</span><span class="o">==</span><span class="s2">&quot;None&quot;</span><span class="p">,</span><span class="s1">&#39;doggo&#39;</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">df_clean</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_clean</span><span class="o">.</span><span class="n">floofer</span><span class="o">==</span><span class="s2">&quot;floofer&quot;</span><span class="p">,</span><span class="s1">&#39;floofer&#39;</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">df_clean</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_clean</span><span class="o">.</span><span class="n">floofer</span><span class="o">==</span><span class="s2">&quot;None&quot;</span><span class="p">,</span><span class="s1">&#39;floofer&#39;</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">df_clean</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_clean</span><span class="o">.</span><span class="n">pupper</span><span class="o">==</span><span class="s2">&quot;pupper&quot;</span><span class="p">,</span><span class="s1">&#39;pupper&#39;</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">df_clean</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_clean</span><span class="o">.</span><span class="n">pupper</span><span class="o">==</span><span class="s2">&quot;None&quot;</span><span class="p">,</span><span class="s1">&#39;pupper&#39;</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">df_clean</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_clean</span><span class="o">.</span><span class="n">puppo</span><span class="o">==</span><span class="s2">&quot;puppo&quot;</span><span class="p">,</span><span class="s1">&#39;puppo&#39;</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">df_clean</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_clean</span><span class="o">.</span><span class="n">puppo</span><span class="o">==</span><span class="s2">&quot;None&quot;</span><span class="p">,</span><span class="s1">&#39;puppo&#39;</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_clean</span><span class="p">[[</span><span class="s1">&#39;doggo&#39;</span><span class="p">,</span><span class="s1">&#39;floofer&#39;</span><span class="p">,</span><span class="s1">&#39;pupper&#39;</span><span class="p">,</span><span class="s1">&#39;puppo&#39;</span><span class="p">]]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Test</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_clean</span><span class="p">[</span><span class="s1">&#39;doggo&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()[</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_clean</span><span class="p">[</span><span class="s1">&#39;floofer&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()[</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_clean</span><span class="p">[</span><span class="s1">&#39;pupper&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()[</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_clean</span><span class="p">[</span><span class="s1">&#39;puppo&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()[</span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
 
     </div>
@@ -14227,10 +14323,10 @@ The steps that I have gone through are belows.</p>
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#CODE: Delete duplicated jpg_url</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">##drop duplicates </span>
 <span class="n">image_pred_clean</span> <span class="o">=</span> <span class="n">image_pred_clean</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;jpg_url&#39;</span><span class="p">],</span> <span class="n">keep</span><span class="o">=</span><span class="s1">&#39;last&#39;</span><span class="p">)</span>
 
-<span class="c1">#TEST</span>
+<span class="c1">##confirm drop duplicate</span>
 <span class="nb">sum</span><span class="p">(</span><span class="n">image_pred_clean</span><span class="p">[</span><span class="s1">&#39;jpg_url&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">duplicated</span><span class="p">())</span>
 </pre></div>
 
@@ -14252,32 +14348,23 @@ The steps that I have gone through are belows.</p>
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#CODE: the first true prediction (p1, p2 or p3) will be store in these lists</span>
-<span class="n">dog_type</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">confidence_list</span> <span class="o">=</span> <span class="p">[]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">image_pred_clean</span><span class="p">[</span><span class="s1">&#39;dog_type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;None&#39;</span>
+<span class="n">image_pred_clean</span><span class="p">[</span><span class="s1">&#39;confidence&#39;</span><span class="p">]</span><span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">idx</span><span class="o">=</span><span class="mi">0</span>
 
-<span class="c1">#create a function with nested if to capture the dog type and confidence level</span>
-<span class="c1"># from the first &#39;true&#39; prediction</span>
-<span class="k">def</span> <span class="nf">image</span><span class="p">(</span><span class="n">image_pred_clean</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">image_pred_clean</span><span class="p">[</span><span class="s1">&#39;p1_dog&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
-        <span class="n">dog_type</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">image_pred_clean</span><span class="p">[</span><span class="s1">&#39;p1&#39;</span><span class="p">])</span>
-        <span class="n">confidence_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">image_pred_clean</span><span class="p">[</span><span class="s1">&#39;p1_conf&#39;</span><span class="p">])</span>
-    <span class="k">elif</span> <span class="n">image_pred_clean</span><span class="p">[</span><span class="s1">&#39;p2_dog&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
-        <span class="n">dog_type</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">image_pred_clean</span><span class="p">[</span><span class="s1">&#39;p2&#39;</span><span class="p">])</span>
-        <span class="n">confidence_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">image_pred_clean</span><span class="p">[</span><span class="s1">&#39;p2_conf&#39;</span><span class="p">])</span>
-    <span class="k">elif</span> <span class="n">image_pred_clean</span><span class="p">[</span><span class="s1">&#39;p3_dog&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
-        <span class="n">dog_type</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">image_pred_clean</span><span class="p">[</span><span class="s1">&#39;p3&#39;</span><span class="p">])</span>
-        <span class="n">confidence_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">image_pred_clean</span><span class="p">[</span><span class="s1">&#39;p3_conf&#39;</span><span class="p">])</span>
+
+<span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="n">image_pred_clean</span><span class="o">.</span><span class="n">index</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">image_pred_clean</span><span class="p">[</span><span class="s1">&#39;p1_dog&#39;</span><span class="p">][</span><span class="n">idx</span><span class="p">]</span><span class="o">==</span><span class="kc">True</span><span class="p">:</span>
+        <span class="n">image_pred_clean</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="s1">&#39;dog_type&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">image_pred_clean</span><span class="p">[</span><span class="s1">&#39;p1&#39;</span><span class="p">][</span><span class="n">idx</span><span class="p">]</span>
+        <span class="n">image_pred_clean</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="s1">&#39;confidence&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">image_pred_clean</span><span class="p">[</span><span class="s1">&#39;p1_conf&#39;</span><span class="p">][</span><span class="n">idx</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="n">image_pred_clean</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="s1">&#39;p2_dog&#39;</span><span class="p">]</span><span class="o">==</span><span class="kc">True</span><span class="p">:</span>
+        <span class="n">image_pred_clean</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="s1">&#39;dog_type&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">image_pred_clean</span><span class="p">[</span><span class="s1">&#39;p2&#39;</span><span class="p">][</span><span class="n">idx</span><span class="p">]</span>
+        <span class="n">image_pred_clean</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="s1">&#39;confidence&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">image_pred_clean</span><span class="p">[</span><span class="s1">&#39;p2_conf&#39;</span><span class="p">][</span><span class="n">idx</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="n">image_pred_clean</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="s1">&#39;p3_dog&#39;</span><span class="p">]</span><span class="o">==</span><span class="kc">True</span><span class="p">:</span>
+        <span class="n">image_pred_clean</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="s1">&#39;dog_type&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">image_pred_clean</span><span class="p">[</span><span class="s1">&#39;p3&#39;</span><span class="p">][</span><span class="n">idx</span><span class="p">]</span>
+        <span class="n">image_pred_clean</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="s1">&#39;confidence&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">image_pred_clean</span><span class="p">[</span><span class="s1">&#39;p3_conf&#39;</span><span class="p">][</span><span class="n">idx</span><span class="p">]</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">dog_type</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;None&#39;</span><span class="p">)</span>
-        <span class="n">confidence_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;None&#39;</span><span class="p">)</span>
-
-<span class="c1">#series objects having index the image_pred_clean column.        </span>
-<span class="n">image_pred_clean</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-
-<span class="c1">#create new columns</span>
-<span class="n">image_pred_clean</span><span class="p">[</span><span class="s1">&#39;dog_type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dog_type</span>
-<span class="n">image_pred_clean</span><span class="p">[</span><span class="s1">&#39;confidence_list&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">confidence_list</span>
+        <span class="k">pass</span>
 </pre></div>
 
     </div>
@@ -14285,12 +14372,37 @@ The steps that I have gone through are belows.</p>
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+
+<pre><code>def image(image_pred_clean):
+    if image_pred_clean['p1_dog'] == True:
+        dog_type.append(image_pred_clean['p1'])
+        confidence_list.append(image_pred_clean['p1_conf'])
+    elif image_pred_clean['p2_dog'] == True:
+        dog_type.append(image_pred_clean['p2'])
+        confidence_list.append(image_pred_clean['p2_conf'])
+    elif image_pred_clean['p3_dog'] == True:
+        dog_type.append(image_pred_clean['p3'])
+        confidence_list.append(image_pred_clean['p3_conf'])
+    else:
+        dog_type.append('None')
+        confidence_list.append('None')
+
+image_pred_clean.apply(image, axis=1)
+image_pred_clean['dog_type'] = dog_type
+image_pred_clean['confidence_list'] = confidence_list</code></pre>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#drop rows that has prediction_list &#39;error&#39;</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Drop rows with errors</span>
 <span class="n">image_pred_clean</span> <span class="o">=</span> <span class="n">image_pred_clean</span><span class="p">[</span><span class="n">image_pred_clean</span><span class="p">[</span><span class="s1">&#39;dog_type&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;None&#39;</span><span class="p">]</span>
 
 <span class="c1">#TEST: </span>
@@ -14314,19 +14426,16 @@ The steps that I have gone through are belows.</p>
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#CODE: print list of image_prediction columns</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">image_pred_clean</span><span class="p">))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#code: check columns</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">image_pred_clean</span><span class="o">.</span><span class="n">columns</span><span class="p">),</span><span class="nb">len</span><span class="p">(</span><span class="n">image_pred_clean</span><span class="o">.</span><span class="n">columns</span><span class="p">))</span>
 
 <span class="c1">#Delete columns</span>
-<span class="n">image_pred_clean</span> <span class="o">=</span> <span class="n">image_pred_clean</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;img_num&#39;</span><span class="p">,</span> <span class="s1">&#39;p1&#39;</span><span class="p">,</span> 
-                                                      <span class="s1">&#39;p1_conf&#39;</span><span class="p">,</span> <span class="s1">&#39;p1_dog&#39;</span><span class="p">,</span> 
-                                                      <span class="s1">&#39;p2&#39;</span><span class="p">,</span> <span class="s1">&#39;p2_conf&#39;</span><span class="p">,</span> 
-                                                      <span class="s1">&#39;p2_dog&#39;</span><span class="p">,</span> <span class="s1">&#39;p3&#39;</span><span class="p">,</span> 
-                                                      <span class="s1">&#39;p3_conf&#39;</span><span class="p">,</span> 
-                                                      <span class="s1">&#39;p3_dog&#39;</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">image_pred_clean</span> <span class="o">=</span> <span class="n">image_pred_clean</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;img_num&#39;</span><span class="p">,</span> <span class="s1">&#39;p1&#39;</span><span class="p">,</span> <span class="s1">&#39;p1_conf&#39;</span><span class="p">,</span> <span class="s1">&#39;p1_dog&#39;</span><span class="p">,</span> 
+                                          <span class="s1">&#39;p2&#39;</span><span class="p">,</span> <span class="s1">&#39;p2_conf&#39;</span><span class="p">,</span> <span class="s1">&#39;p2_dog&#39;</span><span class="p">,</span> <span class="s1">&#39;p3&#39;</span><span class="p">,</span> <span class="s1">&#39;p3_conf&#39;</span><span class="p">,</span> 
+                                         <span class="s1">&#39;p3_dog&#39;</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
 
-<span class="c1">#TEST</span>
-<span class="n">image_pred_clean</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="c1">#Test</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">image_pred_clean</span><span class="o">.</span><span class="n">columns</span><span class="p">),</span><span class="nb">len</span><span class="p">(</span><span class="n">image_pred_clean</span><span class="o">.</span><span class="n">columns</span><span class="p">))</span>
 </pre></div>
 
     </div>
@@ -14471,7 +14580,7 @@ The steps that I have gone through are belows.</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="4.12-Save-cleaned-data-in-&quot;twitter_archive_master.csv&quot;">4.12 Save cleaned data in "twitter_archive_master.csv"<a class="anchor-link" href="#4.12-Save-cleaned-data-in-&quot;twitter_archive_master.csv&quot;">&#182;</a></h3>
+<h4 id="4.12-Save-Merged-dataframes">4.12 Save Merged dataframes<a class="anchor-link" href="#4.12-Save-Merged-dataframes">&#182;</a></h4>
 </div>
 </div>
 </div>
@@ -14480,9 +14589,22 @@ The steps that I have gone through are belows.</p>
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Store the clean DataFrame in a CSV file</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Save the cleaned data to master file</span>
 <span class="n">df_twitter</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;twitter_archive_master.csv&#39;</span><span class="p">,</span> 
                  <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
 </pre></div>
 
     </div>
